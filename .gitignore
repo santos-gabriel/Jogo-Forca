@@ -15,6 +15,7 @@
 *.rar
 
 hs_err_pid*
+
 .bat
 
 .project

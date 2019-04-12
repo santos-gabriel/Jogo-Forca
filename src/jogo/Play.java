@@ -1,6 +1,10 @@
 package jogo;
 import java.util.Random;
 import java.util.Scanner;
+/**
+ * 
+ *@author Gabriel
+ */
 public class Play {
 
 	public static void main(String[] args) {
