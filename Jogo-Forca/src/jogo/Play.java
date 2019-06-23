@@ -31,9 +31,9 @@ public class Play {
 		Random random= new Random();
 			//instanciando random
 			
-		String [] palavras= BancoPalavras.palavras;
+		String [] palavras= Palavras.palavras;
 			//vetor recebendo banco de palavras armazenadas em outro vetor
-		String [] dica= BancoPalavras.dicas;
+		String [] dica= Palavras.dicas;
 			//vetor recebendo banco de dicas que estao armazenadas em outro vetor
 		
 		int qtdePalavras= palavras.length;					//definindo a quantidade de palavras do vetor
@@ -53,7 +53,7 @@ public class Play {
 		String letrasUtilizadas= "";						//String que futuramente ira imprimir para o user as letras que ja foram utilizadas
 		
 		char letra;											//variavel que armazenara a letra que o user inserir
-		boolean ganhou= false;								//variavel de controle se ganhou o jogo ou nao, inicialmente começa com valor false
+		boolean ganhou= false;								//variavel de controle se ganhou o jogo ou nao, inicialmente comeï¿½a com valor false
 		int vidas= 6;				//variavel de controle de vidas, user tera 6 vidas
 		
 		
@@ -116,7 +116,7 @@ public class Play {
 				//condicao final sobre a ultima mensagem a ser exibida
 				System.out.println("\n---------------------------------------------\n");
 					
-				System.out.println("\t      ***VOCÊ GANHOU***");
+				System.out.println("\t      ***VOCï¿½ GANHOU***");
 					//mensagem caso jogador tiver ganhado
 			}
 			else {
