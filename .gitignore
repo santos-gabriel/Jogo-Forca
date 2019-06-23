@@ -20,12 +20,14 @@ hs_err_pid*
 
 .project
 
-.xml
-
-.mf
-
 .classpath
 
-.settings
+.settigns
+
+/Jogo-Forca/build.xml
+
+/Jogo-Forca/manifest.mf
+
 /Jogo-Forca/nbproject
+
 /Jogo-Forca/build

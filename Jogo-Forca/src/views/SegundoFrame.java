@@ -202,7 +202,7 @@ public class SegundoFrame extends javax.swing.JFrame {
         char[] acertos = new char [palavra.length()];
         char[] setP = Controle.verificaPalavra(txtLetra.getText(), palavra, acertos);
         String teste = Controle.verificaPalavra(setP, palavra, txtLetra.getText());
-        txtPalavra.setText(teste);
+        txtPalavra.setText(teste.toUpperCase());
         
     }//GEN-LAST:event_btnEnviarActionPerformed
 
