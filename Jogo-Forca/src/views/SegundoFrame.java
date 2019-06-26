@@ -5,6 +5,8 @@
  */
 package views;
 
+import java.awt.Color;
+import java.awt.Component;
 import jogo.Controle;
 import jogo.Palavras;
 
@@ -17,30 +19,47 @@ public class SegundoFrame extends javax.swing.JFrame {
     
     String palavra;
     String palavraUnderline;
-    //char [] acertos = new char [palavra.length()];
+    Palavras p = new Palavras();
+    Controle c = new Controle();
+    String letrasUtilizadas = "";
     /**
      * Creates new form SegundoFrame
      */
     public SegundoFrame() {
         initComponents();
        
-        Palavras p = new Palavras();         //instanciando classe das palavras em um objeto
         
         this.palavra = p.setPalavra();
         this.palavraUnderline = p.setPalavraUnderline(palavra);
         txtPalavra.setText(palavraUnderline);
         txtDica.setText(p.setDica());
+        this.setResizable(false);
+        this.setTitle("Jogo da Forca");
+        this.setLocationRelativeTo(null);
+        c.resetPalavra(palavra);
+        btnEnviar.setBackground(Color.red);
         
-       // setAcertos();
         
     }
     
     
-    //public void setAcertos (){
-        //for (int i = 0; i < palavra.length(); i++){
-        //    acertos[i] = 0;
-        //}
-   // }
+    @Override
+    public void setResizable(boolean bln) {
+        super.setResizable(bln); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setTitle(String string) {
+        super.setTitle(string); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setLocationRelativeTo(Component cmpnt) {
+        super.setLocationRelativeTo(cmpnt); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,32 +71,19 @@ public class SegundoFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDica = new javax.swing.JTextField();
+        txtDica = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtLetra = new javax.swing.JTextField();
         btnEnviar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        txtPalavra = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtLetrasUtilizadas = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        txtPalavra = new javax.swing.JLabel();
+        txtLetrasUtilizadas = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Dica:");
-
-        txtDica.setEditable(false);
-        txtDica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtDica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDicaActionPerformed(evt);
-            }
-        });
+        txtDica.setText("Dica:");
 
         jLabel2.setText("Insira uma letra");
 
@@ -90,120 +96,91 @@ public class SegundoFrame extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
+        txtPalavra.setText("Palavra");
 
-        txtPalavra.setEditable(false);
-        txtPalavra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLetrasUtilizadas.setText("Letras utilizadas");
 
-        jLabel4.setText("Palavra");
-
-        jLabel5.setText("Letras utilizadas");
-
-        txtLetrasUtilizadas.setEditable(false);
-        txtLetrasUtilizadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/00.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtLetrasUtilizadas)
+                        .addGap(133, 133, 133)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEnviar))
-                    .addComponent(jLabel1)
-                    .addComponent(txtDica, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtLetra)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPalavra, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtLetrasUtilizadas))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(txtDica))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(txtPalavra))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(img)))
+                .addGap(13, 13, 13))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDica, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel4)
+                .addComponent(txtDica)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPalavra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLetrasUtilizadas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtPalavra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
-                    .addComponent(btnCancelar))
-                .addGap(48, 48, 48))
-        );
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/00.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLetrasUtilizadas)
+                    .addComponent(jLabel2)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-        dispose();
-
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtDicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDicaActionPerformed
-
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        char[] acertos = new char [palavra.length()];
-        char[] setP = Controle.verificaPalavra(txtLetra.getText(), palavra, acertos);
-        String teste = Controle.verificaPalavra(setP, palavra, txtLetra.getText());
-        txtPalavra.setText(teste.toUpperCase());
-        
+       String palavraEscondida = "";
+       String letra = txtLetra.getText();
+       c.setPalavra(palavra, letra.toUpperCase());
+       letrasUtilizadas += ", "+letra;
+       
+       for (int i = 0; i < palavra.length(); i++){
+           
+           palavraEscondida += " "+c.palavra[i]+" ";
+           
+       }
+       
+       
+       txtPalavra.setText(palavraEscondida);
+       txtLetrasUtilizadas.setText(letrasUtilizadas);
+       
+       txtLetra.setText(" ");
+       
+       
+       
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
@@ -242,18 +219,13 @@ public class SegundoFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEnviar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtDica;
+    private javax.swing.JLabel txtDica;
     private javax.swing.JTextField txtLetra;
-    private javax.swing.JTextField txtLetrasUtilizadas;
-    private javax.swing.JTextField txtPalavra;
+    private javax.swing.JLabel txtLetrasUtilizadas;
+    private javax.swing.JLabel txtPalavra;
     // End of variables declaration//GEN-END:variables
 }
