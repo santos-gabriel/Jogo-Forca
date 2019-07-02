@@ -34,7 +34,7 @@ public class Palavras {
     }
     
     
-    public String setPalavraUnderline (String palavra){
+    /*public String setPalavraUnderline (String palavra){
         String palavraUnderline = "";
        
         for (int i = 0; i < palavra.length(); i++){
@@ -42,7 +42,7 @@ public class Palavras {
         }
         return palavraUnderline;
     }
-    
+    */
     
     public String setDica(){
         return this.dicas[indiceSorteado];

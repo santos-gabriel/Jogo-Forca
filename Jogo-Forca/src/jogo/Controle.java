@@ -1,88 +1,132 @@
 package jogo;
 
-import views.SegundoFrame;
+import javax.swing.JOptionPane;
+
 
 public class Controle {
     /**
      * Classe destinada a validações e controle das palavras
      * @author Gabriel
      */
-    public char [] letrasAcertadas = new char [22];
+    Palavras p = new Palavras();
     
-    public char [] acertos = new char [22];
+    public String palavra = p.setPalavra();
     
-    public char [] palavra = new char [22];
+    public String dica = p.setDica();
     
-    public boolean perdeVida = false;
+    public char [] vetEscondida = new char [palavra.length()];
+    
+    public char [] vetPalavra = new char [22];
+    
+    public boolean acertou;
     
     public int vida = 0;
     
-    SegundoFrame sf = new SegundoFrame();
+
     
-    public void resetPalavra (String palavra){
+    public boolean confereLetra (String letra , String letrasUtilizadas){
+        boolean igual = false;
         
-        for (int i = 0; i < palavra.length(); i ++){
+        for (int i = 0; i < letrasUtilizadas.length(); i++){
+        
+            if (letra.charAt(0) == letrasUtilizadas.charAt(i)){
             
-            this.palavra [i] = '_';
+                igual = true;
+            
+            }
+        
+        }
+        return igual;
+    }
+    
+    
+    
+    public String resetPalavra (String palavra){
+        String palavraUnderline = "";
+        for (int i = 0; i < palavra.length(); i ++){
+
+            this.vetEscondida [i] = '_';
+            
+            palavraUnderline += " "+vetEscondida[i]+" ";
+            
+        }
+        
+        return palavraUnderline;
+    }
+    
+    
+    public String setPalavra (String palavra, String letra){
+        String palavraRevelada = "";
+        acertou = false;
+           
+        for (int i = 0; i < palavra.length(); i++){
+
+            if(palavra.charAt(i) == letra.charAt(0)){
+
+                vetEscondida [i] = letra.charAt(0);
+
+                acertou = true;
+
+
+            }
+
+            palavraRevelada += " "+vetEscondida [i]+" ";
 
         }
-    }
-    
-    
-    public void setPalavra (String palavra, String letra){
-        perdeVida = true;
-        for (int i = 0; i < palavra.length(); i++){
-        
-            if(palavra.charAt(i) == letra.charAt(0)){
-            
-                this.palavra[i] = letra.charAt(0);
-                
-                perdeVida = false;
-            
-            }
-        }
-    }
-    
-    public void setImg (){
-        if (perdeVida){
+
+        if (acertou == false){
+
             vida ++;
-            switch(vida){
-                case 0:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/00.jpg")));
-                    break;
-                case 1:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/01.jpg")));
-                    break;
-                case 2:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/02.jpg")));
-                    break;
-                case 3:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/03.jpg")));
-                    break;
-                case 4:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/04.jpg")));
-                    break;
-                case 5:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/05.jpg")));
-                    break;
-                case 6:
-                    sf.img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/06.jpg")));
-                    break;
-            }
+
         }
+
+        return palavraRevelada;
     }
     
     
-    /*public void setPalavra (char letra){
+    
+    public String setPalavraAcerto (String palavra, String letra){
+        String palavraRevelada = "";
+           
+        for (int i = 0; i < palavra.length(); i++){
+
+            if(palavra.charAt(i) == letra.charAt(0)){
+
+                vetEscondida [i] = letra.charAt(0);
+
+            }
+
+            palavraRevelada += vetEscondida [i];
+
+        }
+
+        return palavraRevelada;
+    }
+    
+    public String verificaChute (String palavraChute, String palavra){
+        String palavraRevelada = "";
+        boolean igual = true;
         
-        for (int i = 0; i < acertos.length; i++){
+        for (int i = 0; i < palavra.length(); i++){
+            if (palavraChute.charAt(i) != palavra.charAt(i)){
+                igual = false;
+            }
+        
+        }
+        
+        if (igual == true){
+            palavraRevelada = palavra;
+        }
+        
+        else if (igual == false){
+            vida ++;
+            for (int i = 0; i < palavra.length(); i++){
             
-            if (acertos[i] == 1){
-                
-                palavra[i] = letra;
+                palavraRevelada += " "+vetEscondida[i]+" ";
                 
             }
         }
-    }*/
-    
+        
+        return palavraRevelada;
+    }
 }

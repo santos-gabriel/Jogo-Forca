@@ -93,6 +93,7 @@ public class Principal extends javax.swing.JFrame {
             
         SegundoFrame sf = new SegundoFrame ();          //instanciando o segundo frame
         sf.setVisible(true);                            //"setando" a visibilidade do frame
+        this.dispose();
         
     }//GEN-LAST:event_playActionPerformed
 
