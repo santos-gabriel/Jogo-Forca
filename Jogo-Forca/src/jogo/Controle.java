@@ -119,7 +119,7 @@ public class Controle {
         }
         
         else if (igual == false){
-            vida ++;
+            vida = 6;
             for (int i = 0; i < palavra.length(); i++){
             
                 palavraRevelada += " "+vetEscondida[i]+" ";

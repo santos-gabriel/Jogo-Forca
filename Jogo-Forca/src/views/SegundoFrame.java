@@ -7,6 +7,7 @@ package views;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import jogo.Controle;
 import jogo.Palavras;
@@ -35,7 +36,7 @@ public class SegundoFrame extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("Jogo da Forca");
         this.setLocationRelativeTo(null);
-        btnEnviar.setBackground(Color.red);
+        btnEnviar.setBackground(Color.blue);
         
         
     }
@@ -88,7 +89,7 @@ public class SegundoFrame extends javax.swing.JFrame {
     }
     
     public void verificaLetra (String letra, String letras){
-       
+        
         if (letra.length() > 1){
             palavraChute = c.verificaChute(letra, c.palavra);
             
@@ -102,7 +103,7 @@ public class SegundoFrame extends javax.swing.JFrame {
         }
         
         
-        else if (letra.length() <= 1){
+        if (letra.length() <= 1){
             boolean igual = false;
             
             for (int i = 0; i < letras.length(); i++){
@@ -169,14 +170,21 @@ public class SegundoFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(203, 0, 34));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtDica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtDica.setForeground(new java.awt.Color(0, 51, 204));
+        txtDica.setForeground(new java.awt.Color(255, 255, 255));
         txtDica.setText("Dica:");
 
         txtLetra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLetra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLetraKeyPressed(evt);
+            }
+        });
 
+        btnEnviar.setForeground(new java.awt.Color(255, 255, 255));
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,9 +193,10 @@ public class SegundoFrame extends javax.swing.JFrame {
         });
 
         txtPalavra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPalavra.setForeground(new java.awt.Color(0, 204, 204));
+        txtPalavra.setForeground(new java.awt.Color(255, 255, 255));
         txtPalavra.setText("Palavra");
 
+        txtLetrasUtilizadas.setForeground(new java.awt.Color(255, 255, 255));
         txtLetrasUtilizadas.setText("Letras utilizadas");
 
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/00.jpg"))); // NOI18N
@@ -196,25 +205,28 @@ public class SegundoFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(img)
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEnviar))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtPalavra)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtLetrasUtilizadas)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(176, 176, 176)
+                        .addGap(0, 253, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEnviar)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(img))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPalavra)
                             .addComponent(txtDica))))
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +248,7 @@ public class SegundoFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,6 +272,25 @@ public class SegundoFrame extends javax.swing.JFrame {
         setImg(c.vida);
        
     }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void txtLetraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLetraKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        
+        palavraAcerto = c.setPalavraAcerto(c.palavra, txtLetra.getText().toUpperCase());
+        
+        verificaLetra(txtLetra.getText().toUpperCase(), letrasUsadasJuntas.toUpperCase());
+        
+        letrasUsadasJuntas += txtLetra.getText().charAt(0);
+        
+        
+        txtLetra.setText("");
+        
+        setImg(c.vida);
+        
+        }
+
+    }//GEN-LAST:event_txtLetraKeyPressed
 
     /**
      * @param args the command line arguments
