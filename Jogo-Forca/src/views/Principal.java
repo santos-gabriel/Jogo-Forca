@@ -10,6 +10,7 @@ import java.awt.Color;
 /**
  *
  * @author gabriel
+ * Classe destinada ao primeiro contato onde se da inicio ao jogo ao precionar o jbutton
  */
 public class Principal extends javax.swing.JFrame {
 

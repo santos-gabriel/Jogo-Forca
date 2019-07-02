@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class Controle {
     /**
-     * Classe destinada a validações e controle das palavras
+     * Classe destinada a validações e controle das palavras.
      * @author Gabriel
      */
     Palavras p = new Palavras();

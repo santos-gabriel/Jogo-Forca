@@ -15,6 +15,7 @@ import jogo.Palavras;
 /**
  *
  * @author gabriel
+ * Classe destinada a mostrar as dicas das palavras e mudando conforme for acertando
  */
 public class SegundoFrame extends javax.swing.JFrame {
     
@@ -266,7 +267,6 @@ public class SegundoFrame extends javax.swing.JFrame {
         
         letrasUsadasJuntas += txtLetra.getText().charAt(0);
         
-        
         txtLetra.setText("");
         
         setImg(c.vida);
@@ -282,7 +282,6 @@ public class SegundoFrame extends javax.swing.JFrame {
         verificaLetra(txtLetra.getText().toUpperCase(), letrasUsadasJuntas.toUpperCase());
         
         letrasUsadasJuntas += txtLetra.getText().charAt(0);
-        
         
         txtLetra.setText("");
         

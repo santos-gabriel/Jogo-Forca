@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Palavras { 
     /**
-     * classe destinada ao armazenamento das palavras e das dicas
+     * classe destinada ao armazenamento das palavras e das dicas.
      * @author Gabriel
     */
     
