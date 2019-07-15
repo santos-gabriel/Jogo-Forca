@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import java.awt.Color;
@@ -10,130 +5,122 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import jogo.Controle;
-import jogo.Palavras;
 
 /**
+ * Classe destinada a mostrar as dicas das palavras e mudando-as conforme for
+ * acertando
  *
+ * @version V3.0
  * @author gabriel
- * Classe destinada a mostrar as dicas das palavras e mudando conforme for acertando
  */
 public class SegundoFrame extends javax.swing.JFrame {
-    
-    
-    
+
     Controle c = new Controle();
     String letrasUtilizadas = "";
     String letrasUsadasJuntas = "";
     String palavraAcerto = "";
     String palavraChute = "";
+
     /**
      * Creates new form SegundoFrame
      */
     public SegundoFrame() {
         initComponents();
-       
+
         txtPalavra.setText(c.resetPalavra(c.palavra));
         txtDica.setText(c.dica);
         this.setResizable(false);
         this.setTitle("Jogo da Forca");
         this.setLocationRelativeTo(null);
         btnEnviar.setBackground(Color.blue);
-        
-        
+
     }
-    
-    
-    public void setImg (int num){
-    
-        switch (num){
-        
+
+    public void setImg(int num) {
+
+        switch (num) {
+
             case 0:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/00.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/000.jpg")));
                 break;
             case 1:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/01.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/001.jpg")));
                 break;
             case 2:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/02.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/002.jpg")));
                 break;
             case 3:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/03.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/003.jpg")));
                 break;
             case 4:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/04.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/004.jpg")));
                 break;
             case 5:
-                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/05.jpg")));
+                img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/005.jpg")));
                 JOptionPane.showMessageDialog(null, "Última tentativa");
                 break;
             case 6:
                 img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/06.jpg")));
-                JOptionPane.showMessageDialog(null, "Perdeu!\nA palavra era: "+c.palavra);
+                JOptionPane.showMessageDialog(null, "Perdeu!\nA palavra era: " + c.palavra);
                 this.dispose();
-                Principal p = new Principal ();
+                Principal p = new Principal();
                 p.setVisible(true);
                 break;
         }
-    
-    }
-    
-    
-    public void certificaAcerto (String palavra, String palavraRevelada){
 
-        if (palavraRevelada.equals(palavra)){
+    }
+
+    public void certificaAcerto(String palavra, String palavraRevelada) {
+
+        if (palavraRevelada.equals(palavra)) {
             JOptionPane.showMessageDialog(null, "Acertou!");
             this.dispose();
             Principal p = new Principal();
             p.setVisible(true);
         }
-        
+
     }
-    
-    public void verificaLetra (String letra, String letras){
-        
-        if (letra.length() > 1){
+
+    public void verificaLetra(String letra, String letras) {
+
+        if (letra.length() > 1) {
             palavraChute = c.verificaChute(letra, c.palavra);
-            
+
             txtPalavra.setText(palavraChute);
-            
+
             certificaAcerto(c.palavra, palavraChute);
-            
-            letrasUtilizadas += " "+txtLetra.getText()+", ";
-            
+
+            letrasUtilizadas += " " + txtLetra.getText() + ", ";
+
             txtLetrasUtilizadas.setText(letrasUtilizadas);
         }
-        
-        
-        if (letra.length() <= 1){
-            boolean igual = false;
-            
-            for (int i = 0; i < letras.length(); i++){
 
-                if (letra.charAt(0) == letras.charAt(i)){
+        if (letra.length() <= 1) {
+            boolean igual = false;
+
+            for (int i = 0; i < letras.length(); i++) {
+
+                if (letra.charAt(0) == letras.charAt(i)) {
                     igual = true;
                 }
 
             }
-            
-            if (igual == true){
+
+            if (igual == true) {
                 JOptionPane.showMessageDialog(null, "Esta letra já foi inserida\nTente outra letra!");
-            }
-            
-            else if (igual == false){
+            } else if (igual == false) {
                 txtPalavra.setText(c.setPalavra(c.palavra, txtLetra.getText().toUpperCase()));
 
-                letrasUtilizadas += " "+txtLetra.getText()+", ";
+                letrasUtilizadas += " " + txtLetra.getText() + ", ";
 
                 txtLetrasUtilizadas.setText(letrasUtilizadas);
 
                 certificaAcerto(c.palavra, palavraAcerto);
             }
         }
-        
+
     }
-    
-    
-    
+
     @Override
     public void setResizable(boolean bln) {
         super.setResizable(bln); //To change body of generated methods, choose Tools | Templates.
@@ -148,9 +135,6 @@ public class SegundoFrame extends javax.swing.JFrame {
     public void setLocationRelativeTo(Component cmpnt) {
         super.setLocationRelativeTo(cmpnt); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,31 +246,31 @@ public class SegundoFrame extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         palavraAcerto = c.setPalavraAcerto(c.palavra, txtLetra.getText().toUpperCase());
-        
+
         verificaLetra(txtLetra.getText().toUpperCase(), letrasUsadasJuntas.toUpperCase());
-        
+
         letrasUsadasJuntas += txtLetra.getText().charAt(0);
-        
+
         txtLetra.setText("");
-        
+
         setImg(c.vida);
-       
+
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void txtLetraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLetraKeyPressed
 
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-        
-        palavraAcerto = c.setPalavraAcerto(c.palavra, txtLetra.getText().toUpperCase());
-        
-        verificaLetra(txtLetra.getText().toUpperCase(), letrasUsadasJuntas.toUpperCase());
-        
-        letrasUsadasJuntas += txtLetra.getText().charAt(0);
-        
-        txtLetra.setText("");
-        
-        setImg(c.vida);
-        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            palavraAcerto = c.setPalavraAcerto(c.palavra, txtLetra.getText().toUpperCase());
+
+            verificaLetra(txtLetra.getText().toUpperCase(), letrasUsadasJuntas.toUpperCase());
+
+            letrasUsadasJuntas += txtLetra.getText().charAt(0);
+
+            txtLetra.setText("");
+
+            setImg(c.vida);
+
         }
 
     }//GEN-LAST:event_txtLetraKeyPressed
@@ -298,7 +282,7 @@ public class SegundoFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

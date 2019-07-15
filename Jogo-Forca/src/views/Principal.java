@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import java.awt.Color;
 
 /**
+ * Classe destinada ao primeiro contato onde se da o inicio ao jogo ao precionar
+ * o jbutton
  *
+ * @version V3.0
  * @author gabriel
- * Classe destinada ao primeiro contato onde se da inicio ao jogo ao precionar o jbutton
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -24,7 +21,6 @@ public class Principal extends javax.swing.JFrame {
         this.setTitle("Jogo da Forca");
         this.setLocationRelativeTo(null);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,11 +93,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
-            
-        SegundoFrame sf = new SegundoFrame ();          //instanciando o segundo frame
+
+        SegundoFrame sf = new SegundoFrame();          //instanciando o segundo frame
         sf.setVisible(true);                            //"setando" a visibilidade do frame
         this.dispose();
-        
+
     }//GEN-LAST:event_playActionPerformed
 
     /**
@@ -111,7 +107,7 @@ public class Principal extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
