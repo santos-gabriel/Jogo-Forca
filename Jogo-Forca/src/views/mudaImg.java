@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 
 /**
+ * Classe destinada a sobrepor o metodo swing podendo assim adicionar imagem as
+ * jlabels que necessitarem
+ *
  * @version 3.0
  * @author gabriel
  */
@@ -12,7 +15,9 @@ public class mudaImg extends javax.swing.JPanel {
     private ImageIcon img;
 
     public mudaImg() {
+
         img = new ImageIcon();
+
     }
 
     @Override
@@ -24,11 +29,15 @@ public class mudaImg extends javax.swing.JPanel {
     }
 
     public void setImg(ImageIcon img) {
+
         this.img = img;
+
     }
 
     public ImageIcon getImg() {
+
         return this.img;
+
     }
 
 }
