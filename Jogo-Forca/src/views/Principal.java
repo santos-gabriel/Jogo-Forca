@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  * Classe destinada ao primeiro contato onde se da o inicio ao jogo ao precionar
@@ -31,18 +32,14 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        JPanelImg = new views.mudaImg();
         play = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jogo da Forca");
 
-        jPanel1.setBackground(new java.awt.Color(203, 0, 34));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Bem vindo ao Jogo da Forca");
+        JPanelImg.setImg(new ImageIcon("src/img/imgJogoForcaMenu.jpg"));
 
         play.setBackground(javax.swing.UIManager.getDefaults().getColor("FormattedTextField.selectionBackground"));
         play.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -54,38 +51,42 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(133, 133, 133))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(play)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Bem vindo ao Jogo da Forca");
+
+        javax.swing.GroupLayout JPanelImgLayout = new javax.swing.GroupLayout(JPanelImg);
+        JPanelImg.setLayout(JPanelImgLayout);
+        JPanelImgLayout.setHorizontalGroup(
+            JPanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelImgLayout.createSequentialGroup()
+                .addContainerGap(190, Short.MAX_VALUE)
+                .addGroup(JPanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelImgLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelImgLayout.createSequentialGroup()
+                        .addComponent(play)
+                        .addGap(150, 150, 150))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+        JPanelImgLayout.setVerticalGroup(
+            JPanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelImgLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(66, 66, 66)
                 .addComponent(play)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanelImg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanelImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,7 +94,6 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
-
         SegundoFrame sf = new SegundoFrame();          //instanciando o segundo frame
         sf.setVisible(true);                            //"setando" a visibilidade do frame
         this.dispose();
@@ -136,8 +136,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private views.mudaImg JPanelImg;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton play;
     // End of variables declaration//GEN-END:variables
 }
