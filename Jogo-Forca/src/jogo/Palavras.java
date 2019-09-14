@@ -13,8 +13,8 @@ public class Palavras extends Geracao {
      * @version V3.0
      * @author Gabriel
      */
-    private final ArrayList<String> palavras = getRead("palavrasJF.conf");
-    private final ArrayList<String> dicas = getRead("dicasJF.conf");
+    private final ArrayList<String> palavras = getRead("src/arq/palavrasJF.conf");
+    private final ArrayList<String> dicas = getRead("src/arq/dicasJF.conf");
     private int indice;
     private final Random rm = new Random();
 
